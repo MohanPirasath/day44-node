@@ -40,9 +40,9 @@ app.post("/checkuser",async function(req,res){
    const userexist= await Client.db("FoodToken").collection("users").findOne({username:username})
 
     if(userexist){
-        res.send("User exist")
+        res.status(200).send("User exist")
     }else{
-        res.send("User not found")
+        res.status(400).send("User not found")
     }
 
 })
@@ -59,9 +59,9 @@ app.post("/Restpassword",async function(req,res){
         username:username,
         password:readyhashedpassword
      }})
-        res.send("password updated")
+        res.status(200).send("password updated")
     }else{
-        res.send("something went worng")
+        res.status(400).send("something went worng")
     }
 
 
